@@ -75,7 +75,3 @@ if uploaded_file is not None:
             result_image = cv2.drawContours(image.copy(), [contour], -1, (0, 255, 0), 2)
             st.image(result_image, caption="Detected Insect Contour", channels="BGR")
 
-
-
-
-
