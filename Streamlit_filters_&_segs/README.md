@@ -3,6 +3,7 @@ This Streamlit app allows users to apply various filters and segmentation algori
 
 ## Features
 Filters and Segmentations:
+
 Gaussian Blur
 
 Sobel Edge Detection
