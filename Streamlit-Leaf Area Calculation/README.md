@@ -3,7 +3,8 @@
 
 This Streamlit app calculates the real-world area of a leaf in an uploaded image using an AruCo marker as a reference for scale. It leverages computer vision techniques for accurate and user-friendly measurements.
 
-# notice- The image must cuntain AruCo 5x5 marker
+> [!IMPORTANT]
+> Attention! The image must contain AruCo 5x5 marker
 
 ## Features
 Image Upload: Upload an image containing both an AruCo marker and a leaf.
