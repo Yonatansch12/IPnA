@@ -14,7 +14,7 @@ import numpy as np
 
 # Function to detect AruCo marker and calculate real-world scaling factor
 def detect_aruco_and_scale(image, marker_length_cm):
-    aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_250)
+    aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_50)
     parameters = cv2.aruco.DetectorParameters()
     detector = cv2.aruco.ArucoDetector(aruco_dict, parameters)
 
