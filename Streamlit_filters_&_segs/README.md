@@ -17,5 +17,4 @@ Watershed Segmentation
 K-Means Clustering
 
 Interactive Parameters:
-
 Customize kernel sizes, thresholds, and K-Means clustering attempts.
