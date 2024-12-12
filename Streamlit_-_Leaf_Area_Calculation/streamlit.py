@@ -48,7 +48,7 @@ def calculate_object_area(image, scale):
         return None, None
 
 # Streamlit App
-st.title("Real-World Area Calculator Using AruCo Marker")
+st.title("Leaf Area Calculator Using AruCo Marker")
 
 # User inputs the known length of the AruCo marker
 marker_length_cm = st.number_input("Enter the real-world size of the AruCo marker (in cm):", min_value=1.0, value=5.0)
