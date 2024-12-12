@@ -48,7 +48,7 @@ def calculate_object_area(image, scale):
         return None, None
 
 # Streamlit App
-st.title("Insect Real-World Area Calculator Using AruCo Marker")
+st.title("Real-World Area Calculator Using AruCo Marker")
 
 # User inputs the known length of the AruCo marker
 marker_length_cm = st.number_input("Enter the real-world size of the AruCo marker (in cm):", min_value=1.0, value=5.0)
@@ -70,7 +70,7 @@ if uploaded_file is not None:
         real_area_cm2, contour = calculate_object_area(image, scale)
 
         if real_area_cm2:
-            st.write(f"### Real-world area of the insect: **{real_area_cm2:.2f} cm²**")
+            st.write(f"### Real-world area of the object: **{real_area_cm2:.2f} cm²**")
             # Draw the contour on the image
             result_image = cv2.drawContours(image.copy(), [contour], -1, (0, 255, 0), 2)
             st.image(result_image, caption="Detected Insect Contour", channels="BGR")
