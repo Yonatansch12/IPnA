@@ -3,66 +3,56 @@ import cv2
 import numpy as np
 from PIL import Image
 
-# Function to process the image
-def process_image(uploaded_image):
-    # Convert the image to OpenCV format
-    image = np.array(uploaded_image)
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-
-    # Convert the image to HSV color space
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
-    # Define HSV color range for veins (greenish-yellow)
-    lower_veins = np.array([30, 40, 40])  # Adjust based on your image
-    upper_veins = np.array([60, 255, 255])
-
-    # Create a binary mask for veins
-    veins_mask = cv2.inRange(hsv_image, lower_veins, upper_veins)
-
-    # Define HSV color range for damaged areas (yellowish-brownish range)
-    lower_damage = np.array([10, 50, 50])
-    upper_damage = np.array([35, 255, 255])
-
-    # Create a binary mask for damaged areas
-    damage_mask = cv2.inRange(hsv_image, lower_damage, upper_damage)
-
-    # Remove the veins from the damage mask
-    damage_mask_no_veins = cv2.bitwise_and(damage_mask, cv2.bitwise_not(veins_mask))
-
-    # Apply morphological operations to clean up the new mask
-    kernel = np.ones((5, 5), np.uint8)
-    damage_mask_no_veins = cv2.morphologyEx(damage_mask_no_veins, cv2.MORPH_CLOSE, kernel)
-    damage_mask_no_veins = cv2.morphologyEx(damage_mask_no_veins, cv2.MORPH_OPEN, kernel)
-
-    # Calculate the total leaf area in pixels
-    total_leaf_area_pixels = cv2.countNonZero(damage_mask)
-
-    # Calculate the refined damaged area in pixels
-    refined_damaged_area_pixels = cv2.countNonZero(damage_mask_no_veins)
-
-    # Highlight the original damaged areas on the original image
-    highlighted_damage = cv2.bitwise_and(image, image, mask=damage_mask)
-
-    # Highlight the refined damaged areas on the original image
-    highlighted_refined_damage = cv2.bitwise_and(image, image, mask=damage_mask_no_veins)
-
-    return image, highlighted_damage, highlighted_refined_damage, total_leaf_area_pixels, refined_damaged_area_pixels
-
-# Streamlit UI
-st.title("Leaf Damage Analysis")
+# Title and introduction
+st.title("Leaf Damage Analysis App")
+st.write("Upload an image and adjust settings to analyze leaf damage.")
 
 # File uploader
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload a leaf image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
-    # Read the uploaded image
-    uploaded_image = Image.open(uploaded_file)
+    # Load the image
+    image = Image.open(uploaded_file)
+    image_np = np.array(image)
+    st.image(image, caption="Original Image", use_column_width=True)
 
-    # Process the image
-    original_image, highlighted_damage, highlighted_refined_damage, total_pixels, refined_pixels = process_image(uploaded_image)
+    # Sidebar for HUE settings
+    st.sidebar.subheader("HUE Settings")
+    leaf_hue = st.sidebar.slider("Leaf HUE", 0, 179, 60, 1)
+    damage_hue = st.sidebar.slider("Damage HUE", 0, 179, 120, 1)
+
+    # Sidebar for display options
+    st.sidebar.subheader("Display Options")
+    display_option = st.sidebar.radio(
+        "Choose output display:",
+        ("Original + Processed Images", "Original Only", "Processed Only")
+    )
+
+    # Process the image based on selected HUE values
+    def process_image(img, leaf_hue, damage_hue):
+        hsv_image = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+        
+        # Define ranges for leaf and damage
+        leaf_lower = np.array([leaf_hue - 10, 50, 50])
+        leaf_upper = np.array([leaf_hue + 10, 255, 255])
+        
+        damage_lower = np.array([damage_hue - 10, 50, 50])
+        damage_upper = np.array([damage_hue + 10, 255, 255])
+        
+        # Masks
+        leaf_mask = cv2.inRange(hsv_image, leaf_lower, leaf_upper)
+        damage_mask = cv2.inRange(hsv_image, damage_lower, damage_upper)
+        
+        # Combine masks with the original image
+        leaf_area = cv2.bitwise_and(img, img, mask=leaf_mask)
+        damage_area = cv2.bitwise_and(img, img, mask=damage_mask)
+        return leaf_area, damage_area
+
+    processed_leaf, processed_damage = process_image(image_np, leaf_hue, damage_hue)
 
     # Display results
-    st.image([original_image, highlighted_damage, highlighted_refined_damage], caption=["Original Image", "Original Damage", "Refined Damage"], use_column_width=True)
-
-    # Show calculated results
-    st.write(f"Original Damaged Area (pixels): {total_pixels}")
-    st.write(f"Refined Damaged Area (pixels): {refined_pixels}")
+    if display_option == "Original + Processed Images":
+        st.image([image, processed_leaf, processed_damage], caption=["Original", "Leaf Area", "Damage Area"], use_column_width=True)
+    elif display_option == "Original Only":
+        st.image(image, caption="Original Image", use_column_width=True)
+    elif display_option == "Processed Only":
+        st.image([processed_leaf, processed_damage], caption=["Leaf Area", "Damage Area"], use_column_width=True)
