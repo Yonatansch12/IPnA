@@ -25,7 +25,8 @@ The project is about
 
 > [!NOTE]
 You can find more information in the PDF and ipynb files.
-Made by:
-> Yonatan Schwartz & Nethanel Fishman
+
+# Made by:
+Yonatan Schwartz & Nethanel Fishman
 
 
