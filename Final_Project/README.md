@@ -12,7 +12,8 @@ The project is about
 
 
 > [!NOTE]
-You can find more information on the PDF and ipynb files. 
-
+You can find more information in the PDF and ipynb files.
+Made by:
+> Yonatan Schwartz & Nethanel Fishman
 
 
