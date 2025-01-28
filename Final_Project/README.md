@@ -19,7 +19,8 @@ The project is about
 
 
 
-
+> [!NOTE]
+You can find more information on the PDF and ipynb files. 
 
 
 
