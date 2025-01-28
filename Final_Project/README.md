@@ -21,9 +21,6 @@ The project is about
 <br />
 <br />
 
-![Image](https://github.com/user-attachments/assets/c77460e7-7205-4f61-a017-fbc7218935d9)
-
-
 > [!NOTE]
 You can find more information in the PDF and ipynb files.
 
