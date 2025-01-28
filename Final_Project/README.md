@@ -22,9 +22,6 @@ The project is about
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
 
 > [!NOTE]
 You can find more information in the PDF and ipynb files.
