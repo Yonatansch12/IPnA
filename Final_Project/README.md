@@ -17,6 +17,14 @@ The project is about
 <br />
 <br />
 <br />
+![Image](https://github.com/user-attachments/assets/b1d68654-64e0-4e97-98f7-0e7c80284db4)
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 > [!NOTE]
 You can find more information in the PDF and ipynb files.
