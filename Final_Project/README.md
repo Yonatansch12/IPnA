@@ -20,7 +20,7 @@
 <br />
 
 ## Project Presentation
-[Canva](https://www.canva.com/design/DAGdkC5A5Zo/yfWgsOOmxVcOCX_l8sUjwg/edit?utm_content=DAGdkC5A5Zo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[Canva](https://www.canva.com/design/DAGdkC5A5Zo/BSSLShF_M539pYvz_o0GOg/view?utm_content=DAGdkC5A5Zo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6aa2444108)
 <br />
 <br />
 
