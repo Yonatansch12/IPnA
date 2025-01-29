@@ -26,7 +26,9 @@
 
 > [!NOTE]
 You can find more information in the PDF and ipynb files.
-
+<br />
+<br />
+<br />
 # Made by:
 Yonatan Schwartz & Nethanel Fishman
 
