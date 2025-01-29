@@ -17,10 +17,12 @@
 <br />
 <br />
 <br />
-<br 
+<br />
 
 ## Project Presentation
 [Canva](https://www.canva.com/design/DAGdkC5A5Zo/yfWgsOOmxVcOCX_l8sUjwg/edit?utm_content=DAGdkC5A5Zo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+<br />
+<br />
 
 > [!NOTE]
 You can find more information in the PDF and ipynb files.
