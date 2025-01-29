@@ -12,7 +12,7 @@
 <br />
 
 ## Code workflow:
-![Image](https://github.com/user-attachments/assets/b1d68654-64e0-4e97-98f7-0e7c80284db4)
+![Image](https://github.com/user-attachments/assets/c2bd2fa8-2eef-4871-a79b-5ff28499596a)
 
 <br />
 <br />
